@@ -8,6 +8,7 @@ A full-screen, interactive Princess Day tribute presented as a seven-scene fairy
 - A premium entrance button and a Flower Garden with individual quote reveals for the rose, lily, and tulip.
 - A special-memory scene with the portrait placeholder incorporated into its background artwork.
 - A closed envelope that responds to mouse, touch, and keyboard input with a seal-centered flower and sparkle burst before opening the letter scene.
+- A discreet music-note link that opens the official YouTube video for Ed Sheeran’s “Perfect” in a new tab at 01:40.
 - An Open Letter scene and a final bouquet scene.
 - Reduced-motion support for the animated effects.
 
@@ -44,6 +45,7 @@ This is a small static website, so its existing root-level structure is kept sim
 - HTML5
 - CSS3
 - Vanilla JavaScript
+- Official YouTube watch page for music playback; the website does not embed or host the song.
 - No package manager, framework, build tool, or runtime dependency is required.
 - The stylesheet imports Cormorant Garamond from Google Fonts and falls back to Georgia when that font is unavailable.
 
@@ -78,5 +80,7 @@ The portrait placeholder is part of `background/bg3.png`, rather than a separate
 The project can be deployed to any static web host by publishing the project root with `index.html` as the entry page and retaining the `background/` directory. For GitHub Pages, choose the `main` branch and `/ (root)` as the Pages source in the repository settings.
 
 ## Credits
+
+The music-note control opens the official YouTube video at 01:40. Playback and pause remain on YouTube. The site does not embed the player, host an audio file, control playback state, or guarantee looping.
 
 The background artwork was supplied with the project. No original artist, generation, or licensing metadata was present in the local files, so no creator attribution is inferred here. Add the appropriate credit and license details if they are available.
