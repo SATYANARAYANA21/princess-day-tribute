@@ -5,6 +5,8 @@
   const back = document.querySelector('.back');
   const next = document.querySelector('.next');
   const enter = document.querySelector('.enter');
+  const music = document.querySelector('#background-music');
+  const musicButton = document.querySelector('.sound');
   const envelope = document.querySelector('.envelope-trigger');
   const envelopeBurst = document.querySelector('.envelope-opening-fx');
   const petalsHost = document.querySelector('.petals');
@@ -12,6 +14,55 @@
   let busy = false;
   let envelopeOpening = false;
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  music.volume = 0.4;
+  music.loop = true;
+
+  function syncMusicControl() {
+    const playing = !music.paused && !music.ended;
+    musicButton.classList.toggle('is-playing', playing);
+    musicButton.classList.toggle('needs-gesture', musicButton.dataset.blocked === 'true' && !playing);
+    musicButton.setAttribute('aria-label', playing ? 'Pause background music' : 'Play background music');
+    musicButton.title = musicButton.dataset.blocked === 'true' && !playing
+      ? 'Tap to enable background music'
+      : playing ? 'Pause background music' : 'Play background music';
+  }
+
+  function startMusic() {
+    if (!music.paused) return;
+    const playAttempt = music.play();
+    if (playAttempt && typeof playAttempt.then === 'function') {
+      playAttempt.then(() => {
+        delete musicButton.dataset.blocked;
+        syncMusicControl();
+      }).catch(error => {
+        musicButton.dataset.blocked = 'true';
+        syncMusicControl();
+        if (error?.name !== 'NotAllowedError') console.warn('Background music could not be played.', error);
+      });
+    }
+  }
+
+  music.addEventListener('play', () => {
+    delete musicButton.dataset.blocked;
+    syncMusicControl();
+  });
+  music.addEventListener('pause', syncMusicControl);
+  music.addEventListener('ended', syncMusicControl);
+  musicButton.addEventListener('click', () => {
+    if (music.paused) startMusic();
+    else music.pause();
+  });
+
+  // Try audible autoplay on load; browsers that block it are handled on the
+  // first visitor interaction, including keyboard activation of the entrance.
+  startMusic();
+  document.addEventListener('pointerdown', event => {
+    if (!event.target.closest('.sound')) startMusic();
+  }, { capture: true, once: true });
+  document.addEventListener('keydown', event => {
+    if (!event.target.closest('.sound')) startMusic();
+  }, { capture: true, once: true });
 
   function go(index, start = true) {
     index = Math.max(0, Math.min(scenes.length - 1, index));
@@ -106,7 +157,7 @@
     }
   }
 
-  enter.addEventListener('click', () => go(1));
+  enter.addEventListener('click', () => { startMusic(); go(1); });
   envelope.addEventListener('click', () => {
     if (current !== 4 || busy || envelopeOpening) return;
     envelopeOpening = true;

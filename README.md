@@ -8,7 +8,7 @@ A full-screen, interactive Princess Day tribute presented as a seven-scene fairy
 - A premium entrance button and a Flower Garden with individual quote reveals for the rose, lily, and tulip.
 - A special-memory scene with the portrait placeholder incorporated into its background artwork.
 - A closed envelope that responds to mouse, touch, and keyboard input with a seal-centered flower and sparkle burst before opening the letter scene.
-- A discreet music-note link that opens the official YouTube video for Ed Sheeran’s “Perfect” in a new tab at 01:40.
+- A discreet music-note control for the supplied local background track, with autoplay attempted on page load and first-interaction fallback.
 - An Open Letter scene and a final bouquet scene.
 - Reduced-motion support for the animated effects.
 
@@ -32,6 +32,7 @@ This is a small static website, so its existing root-level structure is kept sim
 
 ```text
 .
+├── assets/audio/     # Supplied local background music
 ├── background/       # Seven scene backgrounds
 ├── index.html        # Scene markup and controls
 ├── script.js         # Scene navigation and interactions
@@ -45,7 +46,7 @@ This is a small static website, so its existing root-level structure is kept sim
 - HTML5
 - CSS3
 - Vanilla JavaScript
-- Official YouTube watch page for music playback; the website does not embed or host the song.
+- HTML audio with a single persistent player and native browser autoplay-policy handling.
 - No package manager, framework, build tool, or runtime dependency is required.
 - The stylesheet imports Cormorant Garamond from Google Fonts and falls back to Georgia when that font is unavailable.
 
@@ -81,6 +82,6 @@ The project can be deployed to any static web host by publishing the project roo
 
 ## Credits
 
-The music-note control opens the official YouTube video at 01:40. Playback and pause remain on YouTube. The site does not embed the player, host an audio file, control playback state, or guarantee looping.
+The music-note control plays or pauses `assets/audio/princess-music.mp3`. The browser attempts audible autoplay when the page loads; if the browser blocks it, the first user interaction starts playback. The supplied MP3's public distribution rights have not been established, so obtain appropriate permission before deploying or publishing this asset.
 
 The background artwork was supplied with the project. No original artist, generation, or licensing metadata was present in the local files, so no creator attribution is inferred here. Add the appropriate credit and license details if they are available.
