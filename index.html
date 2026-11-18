@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#26112f">
+  <title>The Enchanted Princess Day</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main class="experience" aria-label="The Enchanted Princess Day">
+    <div class="scene scene--active" data-scene="0" role="img" aria-label="Royal entrance"></div>
+    <section class="scene" data-scene="1" aria-label="Flower garden">
+      <div class="garden-artboard">
+        <button class="garden-flower garden-flower--rose" type="button" data-flower="rose" aria-label="Rose — Kindness" aria-pressed="false"></button>
+        <button class="garden-flower garden-flower--lily" type="button" data-flower="lily" aria-label="Lily — Grace" aria-pressed="false"></button>
+        <button class="garden-flower garden-flower--tulip" type="button" data-flower="tulip" aria-label="Tulip — Courage" aria-pressed="false"></button>
+      </div>
+    </section>
+    <div class="scene" data-scene="2" role="img" aria-label="A special memory"></div>
+    <div class="scene" data-scene="3" role="img" aria-label="Princess highlights"></div>
+    <section class="scene" data-scene="4" aria-label="Closed letter">
+      <div class="envelope-artboard">
+        <span class="envelope-hint" id="envelope-hint">A little letter is waiting for you... Tap to open ♡</span>
+        <button class="envelope-trigger" type="button" aria-label="Open the letter" aria-describedby="envelope-hint"></button>
+        <div class="envelope-opening-fx" aria-hidden="true"></div>
+      </div>
+    </section>
+    <section class="scene" data-scene="5" aria-label="Open letter">
+      <div class="open-letter-title-group">
+        <h1 class="open-letter-heading">A Letter from the Heart</h1>
+        <div class="open-letter-divider" aria-hidden="true"><span></span></div>
+      </div>
+    </section>
+    <div class="scene" data-scene="6" role="img" aria-label="Final bloom"></div>
+    <div class="veil" aria-hidden="true"></div>
+    <div class="petals" aria-hidden="true"></div>
+
+    <nav class="controls" aria-label="Scene controls">
+      <button class="icon-button back" type="button" aria-label="Previous scene" title="Previous scene" disabled>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 5.8 8.5 12l6.2 6.2M9 12h11"/></svg>
+      </button>
+      <div class="progress" role="group" aria-label="Scene progress">
+        <button class="dot is-current" data-go="0" aria-label="Scene 1"></button>
+        <button class="dot" data-go="1" aria-label="Scene 2"></button>
+        <button class="dot" data-go="2" aria-label="Scene 3"></button>
+        <button class="dot" data-go="3" aria-label="Scene 4"></button>
+        <button class="dot" data-go="4" aria-label="Scene 5"></button>
+        <button class="dot" data-go="5" aria-label="Scene 6"></button>
+        <button class="dot" data-go="6" aria-label="Scene 7"></button>
+      </div>
+      <button class="icon-button next" type="button" aria-label="Continue" title="Continue">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg>
+      </button>
+    </nav>
+    <button class="enter" type="button" aria-label="Enter the Royal Journey" title="Enter the Royal Journey">
+      <span class="enter__ring" aria-hidden="true"></span>
+      <span class="enter__label">Enter the Royal Journey</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg>
+    </button>
+    <button class="sound icon-button" type="button" aria-label="Toggle ambient sound" title="Toggle ambient sound">
+      <svg class="sound-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10v4h4l5 4V6l-5 4H4Zm12-2a6 6 0 0 1 0 8m2-11a10 10 0 0 1 0 14"/></svg>
+      <svg class="sound-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10v4h4l5 4V6l-5 4H4Zm12-1 5 6m0-6-5 6"/></svg>
+    </button>
+    <aside class="garden-quote" role="status" aria-live="polite" aria-atomic="true" hidden>
+      <span class="garden-quote__spark garden-quote__spark--one" aria-hidden="true">✦</span>
+      <span class="garden-quote__spark garden-quote__spark--two" aria-hidden="true">✧</span>
+      <span class="garden-quote__flower" aria-hidden="true"></span>
+      <p class="garden-quote__copy"></p>
+      <div class="garden-quote__divider" aria-hidden="true"><span>♡</span></div>
+    </aside>
+  </main>
+  <script src="./script.js"></script>
+</body>
+</html>
